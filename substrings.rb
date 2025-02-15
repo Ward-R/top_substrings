@@ -1,13 +1,17 @@
-def substrings(word, dictionary)
-  # make array of words .split("") words.new = []
+def substrings(words, dictionary)
+  # make array of words
+  words_array = words.split(" ")
   # make output hash
   substring_hash = Hash.new(0)
   
-  dictionary.each do |element|
-    if word.include?(element)
-      substring_hash[element] += 1
+  words_array.each do |word|
+    dictionary.each do |element|
+      if word.include?(element)
+        substring_hash[element] += 1
+      end
     end
   end
+
   return substring_hash
 end
 
@@ -16,4 +20,4 @@ dictionary = ["below","down","go","going","horn","how","howdy","it","i","low","o
 
 
 p substrings("Howdy partner, sit down! How's it going?", dictionary)
-#   => { "below" => 1, "low" => 1 }
+#    { "down" => 1, "go" => 1, "going" => 1, "how" => 2, "howdy" => 1, "it" => 2, "i" => 3, "own" => 1, "part" => 1, "partner" => 1, "sit" => 1 }
